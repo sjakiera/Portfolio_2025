@@ -216,9 +216,17 @@
 
 // Poster Slider functionality
 var currentSlide = 0;
-var slidesPerView = 3;
+
+function getSlidesPerView() {
+	var slider = document.querySelector('.poster-slider');
+	if (slider && slider.getAttribute('data-slides-per-view')) {
+		return parseInt(slider.getAttribute('data-slides-per-view'));
+	}
+	return 3;
+}
 
 function updateSliderButtons() {
+	var slidesPerView = getSlidesPerView();
 	var prevBtn = document.querySelector('.prev-btn');
 	var nextBtn = document.querySelector('.next-btn');
 	var slides = document.querySelectorAll('.slide');
@@ -243,6 +251,7 @@ function updateSliderButtons() {
 }
 
 function moveSlide(direction) {
+	var slidesPerView = getSlidesPerView();
 	var track = document.querySelector('.slider-track');
 	if (!track) return;
 
@@ -252,6 +261,7 @@ function moveSlide(direction) {
 
 	currentSlide += direction;
 
+	// Clamp currentSlide
 	if (currentSlide < 0) {
 		currentSlide = 0;
 	} else if (currentSlide > maxSlide) {
@@ -264,7 +274,45 @@ function moveSlide(direction) {
 	updateSliderButtons();
 }
 
-// Initialize slider buttons on page load
+// Mixed Slider functionality
+function scrollMixed(direction) {
+	var slider = document.querySelector('.mixed-slider');
+	if (!slider) return;
+
+	var scrollAmount = window.innerWidth / 2; // Scroll half a screen width
+	slider.scrollBy({
+		left: direction * scrollAmount,
+		behavior: 'smooth'
+	});
+}
+
+// JS Typewriter Effect
 document.addEventListener('DOMContentLoaded', function () {
-	updateSliderButtons();
+	var textElement = document.querySelector('.animated-text');
+	if (textElement) {
+		var text = textElement.textContent.trim();
+		if (!text) text = "Digital Designer"; // Fallback
+		textElement.innerHTML = ''; // Clear text
+
+		// Wrap chars
+		for (var i = 0; i < text.length; i++) {
+			var span = document.createElement('span');
+			span.textContent = text[i];
+			textElement.appendChild(span);
+		}
+
+		// Reveal
+		var chars = textElement.querySelectorAll('span');
+		var index = 0;
+
+		function type() {
+			if (index < chars.length) {
+				chars[index].classList.add('visible');
+				index++;
+				setTimeout(type, 150); // Speed: 150ms per letter
+			}
+		}
+
+		setTimeout(type, 500); // Start after 500ms delay
+	}
 });

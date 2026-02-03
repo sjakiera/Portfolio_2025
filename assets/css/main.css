@@ -193,6 +193,35 @@ body {
 	background: #000000;
 }
 
+body.landing-page {
+	background: linear-gradient(135deg, #000000, #1c0512, #000000, #0f020a, #000000);
+	background-size: 300% 300%;
+	background-attachment: fixed;
+	animation: organicBG 20s ease infinite;
+}
+
+@keyframes organicBG {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	25% {
+		background-position: 50% 100%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	75% {
+		background-position: 50% 0%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 body.is-preload *,
 body.is-preload *:before,
 body.is-preload *:after {
@@ -2720,11 +2749,19 @@ button:disabled,
 	width: 100%;
 	border-radius: 4px;
 	overflow: hidden;
+	aspect-ratio: 1 / 1;
 }
 
 .tiles article>.image img {
 	display: block;
 	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+}
+
+.obj-bottom {
+	object-position: bottom !important;
 }
 
 .tiles article>.image:before {
@@ -3307,7 +3344,7 @@ body.is-menu-visible #menu .close {
 
 #footer {
 	padding: 5em 0 6em 0;
-	background-color: #000000;
+	background-color: transparent;
 }
 
 #footer>.inner {
@@ -3397,6 +3434,24 @@ body.is-menu-visible #menu .close {
 	}
 
 }
+
+/* Text Animation */
+.animated-text {
+	color: #F27C00 !important;
+	background: none;
+	-webkit-text-fill-color: initial;
+	display: inline-block;
+}
+
+.animated-text span {
+	opacity: 0;
+	transition: opacity 0.05s ease;
+}
+
+.animated-text span.visible {
+	opacity: 1;
+}
+
 
 @media screen and (max-width: 736px) {
 
