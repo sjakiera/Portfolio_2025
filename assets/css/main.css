@@ -3758,7 +3758,6 @@ body.is-menu-visible #menu .close {
 	width: 100%;
 	max-width: 900px;
 	overflow: hidden;
-	border-radius: 8px;
 }
 
 .slider-track {
@@ -3779,7 +3778,6 @@ body.is-menu-visible #menu .close {
 	height: auto;
 	max-height: 400px;
 	object-fit: contain;
-	border-radius: 8px;
 }
 
 .slider-btn {
