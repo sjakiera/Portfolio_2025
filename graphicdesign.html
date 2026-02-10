@@ -80,27 +80,59 @@
 					<button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
 				</div>
 
-				<h2>Onepagers for fictional restaurant</h2>
+				<div class="case-study">
+					<h2>Herontwerp iconen voor RAAIT</h2>
+					<img class="iconsoverzicht" src="images/iconenpng.png" alt="Icons overzicht" />
+					<button class="toggle-case-btn" data-target="raaitDetails">Show Case Details</button>
 
-
-				<img class="petrajanssen" src="images/Vormgeving 2 beelden.png" alt="" />
-
-				<div>
-
-					<button id="showCaseDetailsBtn">Show Case Details</button>
-
-					<!-- Content that will be shown on button click -->
-					<div id="openandclosedweb" style="display: none;">
-
+					<div id="raaitDetails" class="toggle-content" style="display: none;">
 						<div class="webai">
-							<img src="images/Group 5.png" alt="">
+							<img src="images/Group 5.png" alt="WebAI">
+						</div>
+						<p>RAAIT is a company that designs, develops, and directly applies AI solutions in practice. For
+							their manifesto and toolbox, which highlight six core principles, they asked me to redesign
+							their outdated icons.</p>
+
+						<h3>The results</h3>
+
+						<p>I created a cohesive icon system that visually translates these principles while preserving
+							RAAIT's brand identity. To achieve this, I consistently integrated the bean figure,
+							a distinctive element present in both their logo and website,
+							into the icons. This establishes a clear visual link between the principles and RAAIT's
+							existing brand identity and ensures
+							stylistic consistency across their communication materials.</p>
+						<div style="display: flex; align-items: center; gap: 1em; margin-top: 1em;">
+							<img src="images/Boon.png" alt="Boon Icon" style="max-width: 80px;" />
+							<p style="margin: 0;">The RAAIT bean figure</p>
+						</div>
+
+						<h3>Extra icons</h3>
+						<p>RAAIT's toolbox is divided into different axes. One of the key explorations is identifying
+							which aspect of AI each tool belongs to. Within this framework, they have defined four
+							aspects, for which a new set of icons was required.</p>
+						<p>For these icons, I chose to maintain the brand identity while shifting further into the blue
+							tones of RAAIT's color palette. This creates a distinct yet harmonious extension of their
+							visual language.</p>
+
+						<img src="images/extrapng.png" alt="Extra Icons"
+							style="max-width: 450px; display: block; margin-top: 1.5em;" />
+					</div>
+				</div>
+
+				<div class="case-study">
+					<h2>Onepagers for fictional restaurant</h2>
+					<img class="petrajanssen" src="images/Vormgeving 2 beelden.png" alt="Onepagers" />
+					<button class="toggle-case-btn" data-target="restaurantDetails">Show Case Details</button>
+
+					<div id="restaurantDetails" class="toggle-content" style="display: none;">
+						<div class="webai">
+							<img src="images/Group 5.png" alt="WebAI">
 						</div>
 						<p>I crafted two creative one-pagers for an imaginary restaurant, drawing inspiration from
 							designer Petra Janssen. Notably, I added a unique touch by handcrafting the restaurant's
 							logo.</p>
 						<div class="inner">
 							<h3>Inspiration</h3>
-
 							<p>Petra Janssen uses a variety of different shapes and colors in her work. I loved the
 								colorpallete of her work "the kwallen" so I decided to use it as inspiration for my
 								onepager. I also used her technique where she used letters and shapes together and even
@@ -115,18 +147,14 @@
 							</div>
 
 							<h3>Hand written name logo</h3>
-
 							<p> I hand written the logo for Boutis. I used modern cursive typography.</p>
-
 							<img class="boutis" src="images/boutis.png" alt="Handwritten logo for Boutis" />
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 		<!-- Footer -->
 		<footer id="footer">

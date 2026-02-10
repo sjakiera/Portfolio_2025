@@ -184,12 +184,24 @@
 
 	$(document).ready(function () {
 		console.log("Document ready!");
+
+		$('.toggle-case-btn').on('click', function () {
+			var targetId = $(this).data('target');
+			var $target = $('#' + targetId);
+			if ($target.length) {
+				$target.slideToggle();
+			}
+		});
+
+		// Legacy support or fallback if needed (though new approach is better)
 		var btn = document.getElementById("showCaseDetailsBtn");
 		if (btn) {
 			btn.addEventListener("click", function () {
 				console.log("Button clicked!");
 				var openAndClosedWebDiv = document.getElementById("openandclosedweb");
-				openAndClosedWebDiv.style.display = (openAndClosedWebDiv.style.display === "none") ? "block" : "none";
+				if (openAndClosedWebDiv) {
+					openAndClosedWebDiv.style.display = (openAndClosedWebDiv.style.display === "none") ? "block" : "none";
+				}
 			});
 		}
 
@@ -197,7 +209,9 @@
 		if (btnPlog) {
 			btnPlog.addEventListener("click", function () {
 				var caseDetails = document.getElementById("caseDetails");
-				caseDetails.style.display = (caseDetails.style.display === "none") ? "block" : "none";
+				if (caseDetails) {
+					caseDetails.style.display = (caseDetails.style.display === "none") ? "block" : "none";
+				}
 			});
 		}
 
@@ -205,7 +219,9 @@
 		if (btnDataViz) {
 			btnDataViz.addEventListener("click", function () {
 				var dataVizDetails = document.getElementById("dataVizDetails");
-				dataVizDetails.style.display = (dataVizDetails.style.display === "none") ? "block" : "none";
+				if (dataVizDetails) {
+					dataVizDetails.style.display = (dataVizDetails.style.display === "none") ? "block" : "none";
+				}
 			});
 		}
 	});
@@ -230,6 +246,9 @@ function loadFigma(placeholder) {
 var currentSlide = 0;
 
 function getSlidesPerView() {
+	if (window.innerWidth <= 736) {
+		return 1;
+	}
 	var slider = document.querySelector('.poster-slider');
 	if (slider && slider.getAttribute('data-slides-per-view')) {
 		return parseInt(slider.getAttribute('data-slides-per-view'));
@@ -280,11 +299,29 @@ function moveSlide(direction) {
 		currentSlide = maxSlide;
 	}
 
-	var slideWidth = 100 / slidesPerView;
-	track.style.transform = 'translateX(-' + (currentSlide * slideWidth) + '%)';
+	if (window.innerWidth <= 736) {
+		// On mobile, measure the container and use pixel-based movement
+		var container = document.querySelector('.slider-container');
+		if (container) {
+			var containerWidth = container.offsetWidth;
+			track.style.transform = 'translateX(-' + (currentSlide * containerWidth) + 'px)';
+		}
+	} else {
+		var slideWidth = 100 / slidesPerView;
+		track.style.transform = 'translateX(-' + (currentSlide * slideWidth) + '%)';
+	}
 
 	updateSliderButtons();
 }
+
+// Reset slider position on resize to avoid misalignment
+window.addEventListener('resize', function () {
+	var track = document.querySelector('.slider-track');
+	if (!track) return;
+	currentSlide = 0;
+	track.style.transform = 'translateX(0)';
+	updateSliderButtons();
+});
 
 // Mixed Slider functionality
 function scrollMixed(direction) {
@@ -327,4 +364,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		setTimeout(type, 500); // Start after 500ms delay
 	}
+
+	// Initialize slider buttons on page load
+	updateSliderButtons();
 });
+

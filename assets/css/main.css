@@ -3815,6 +3815,37 @@ body.is-menu-visible #menu .close {
 	pointer-events: none;
 }
 
+@media screen and (max-width: 736px) {
+	.poster-slider {
+		gap: 0.25em;
+	}
+
+	.slider-container {
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.slider-track {
+		gap: 0;
+	}
+
+	.slide {
+		min-width: 100%;
+		max-width: 100%;
+		width: 100%;
+		flex: 0 0 100%;
+		box-sizing: border-box;
+	}
+
+	.slide img {
+		width: 100%;
+		height: auto;
+		max-height: 70vh;
+		object-fit: contain;
+		display: block;
+	}
+}
+
 /* Figma Load-on-click Styles */
 .figma-placeholder {
 	position: relative;
@@ -3871,4 +3902,33 @@ body.is-menu-visible #menu .close {
 	.responsive-iframe {
 		height: 400px;
 	}
+}
+
+/* Case Study */
+.poster-slider {
+	margin-bottom: 5em;
+}
+
+.case-study {
+	margin-bottom: 4em;
+}
+
+.case-study h2 {
+	margin-bottom: 1em;
+}
+
+.case-study img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 1.5em;
+	display: block;
+}
+
+.case-study img.iconsoverzicht {
+	max-width: 750px;
+}
+
+.toggle-case-btn {
+	display: inline-block;
+	margin-bottom: 2em;
 }
