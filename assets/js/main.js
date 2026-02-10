@@ -212,7 +212,19 @@
 
 
 
+
 })(jQuery);
+
+function loadFigma(placeholder) {
+	const frame = placeholder.closest('.figma-frame');
+	const iframe = frame.querySelector('iframe');
+	const src = iframe.getAttribute('data-src');
+
+	if (src) {
+		iframe.setAttribute('src', src);
+		frame.classList.add('loaded');
+	}
+}
 
 // Poster Slider functionality
 var currentSlide = 0;

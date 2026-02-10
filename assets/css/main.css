@@ -190,14 +190,15 @@ html {
 }
 
 body {
-	background: #000000;
+	-ms-overflow-style: scrollbar;
+	background: linear-gradient(135deg, #0d0d0d, #2a0e1c, #0a0a0a, #1a0a2e, #0d0d0d);
+	background-size: 300% 300%;
+	background-attachment: fixed;
+	animation: organicBG 10s ease infinite;
 }
 
 body.landing-page {
-	background: linear-gradient(135deg, #000000, #1c0512, #000000, #0f020a, #000000);
-	background-size: 300% 300%;
-	background-attachment: fixed;
-	animation: organicBG 20s ease infinite;
+	/* Keep this for compatibility but it's now redundant */
 }
 
 @keyframes organicBG {
@@ -3808,7 +3809,66 @@ body.is-menu-visible #menu .close {
 	box-shadow: none;
 }
 
+
 .slider-btn.hidden {
 	visibility: hidden;
 	pointer-events: none;
+}
+
+/* Figma Load-on-click Styles */
+.figma-placeholder {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #1a1a1a;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border: 1px solid rgba(242, 124, 0, 0.3);
+	transition: border-color 0.3s ease;
+	min-height: 450px;
+}
+
+.figma-placeholder:hover {
+	border-color: #F27C00;
+}
+
+.figma-placeholder .load-btn {
+	background-color: #F27C00;
+	color: white;
+	padding: 1em 2em;
+	border-radius: 4px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	transition: transform 0.2s ease;
+}
+
+.figma-placeholder:hover .load-btn {
+	transform: scale(1.05);
+}
+
+.figma-placeholder p {
+	margin-top: 1em;
+	font-size: 0.8em;
+	color: #888;
+	text-align: center;
+}
+
+.figma-frame.loaded .figma-placeholder {
+	display: none;
+}
+
+.responsive-iframe {
+	width: 100%;
+	height: 600px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 736px) {
+	.responsive-iframe {
+		height: 400px;
+	}
 }
