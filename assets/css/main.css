@@ -3929,6 +3929,16 @@ body.is-menu-visible #menu .close {
 	max-width: 750px;
 }
 
+@media screen and (max-width: 736px) {
+	.case-study img.iconsoverzicht {
+		max-width: 100%;
+	}
+
+	.case-study img[src*="extrapng"] {
+		max-width: 100% !important;
+	}
+}
+
 .toggle-case-btn {
 	display: inline-block;
 	margin-bottom: 2em;
