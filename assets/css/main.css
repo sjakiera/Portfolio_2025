@@ -3925,6 +3925,7 @@ body.is-menu-visible #menu .close {
 }
 
 .case-study img.iconsoverzicht {
+	width: 100%;
 	max-width: 750px;
 }
 
