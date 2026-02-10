@@ -3931,7 +3931,9 @@ body.is-menu-visible #menu .close {
 
 @media screen and (max-width: 736px) {
 	.case-study img.iconsoverzicht {
-		max-width: 100%;
+		max-width: 100% !important;
+		width: 100% !important;
+		height: auto !important;
 	}
 
 	.case-study img[src*="extrapng"] {
